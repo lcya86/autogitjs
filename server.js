@@ -4,6 +4,7 @@ http.createServer(function(req,res){
 	req.setEncoding('utf8');
 	req.on('data',function(data){
 		if(req.method==='post'){
+			console.log('execing....');
 			exec('cd /root/MyNodeBlog;git pull https://github.com/lcya86/MyNodeBlog.git master',function(error, stdout, stderr){
 				console.log('stdout: ' + stdout);
 		    console.log('stderr: ' + stderr);
