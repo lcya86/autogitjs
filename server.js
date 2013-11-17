@@ -1,12 +1,7 @@
-var http = reqire('http');
-var exec = require('child_process').exec;
-http.createServer(function(req,res){
-	var result = '';
-	res.setEncoding('utf8');
-	res.on('data',function(data){
-		result += data;
-	})
-	res.on('end',function(){
-		console.log(result);
-	})
-}).listen(3001);
+var request = require('request');
+var url ='http://requestb.in/n6zzqan7'
+request(url, function (error, response, body) {
+  if (!error) {
+    console.log(body);
+  }
+});
