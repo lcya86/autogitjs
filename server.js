@@ -1,12 +1,18 @@
 var http = require('http');
 var exec = require('child_process').exec;
 http.createServer(function(req,res){
-	var result = '';
 	res.setEncoding('utf8');
 	res.on('data',function(data){
-		result += data;
+		if(req.method==='post'){
+			exec('cd /root/MyNodeBlog;git pull https://github.com/lcya86/MyNodeBlog.git master',function(error, stdout, stderr){
+				console.log('stdout: ' + stdout);
+		    console.log('stderr: ' + stderr);
+		    if (error !== null) {
+		      console.log('exec error: ' + error);
+		    }
+			});
+		}
 	})
-	res.on('end',function(){
-		console.log(result);
-	})
-}).listen(3001);
+}).listen(3001,function(){
+	console.log('listening port 3001');
+});
