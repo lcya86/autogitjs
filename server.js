@@ -1,12 +1,16 @@
 var http = require('http');
-var exec = require('child_process').exec;
 http.createServer(function(req,res){
-	var result = '';
-	res.setEncoding('utf8');
-	res.on('data',function(data){
-		result += data;
-	})
-	res.on('end',function(){
-		console.log(result);
-	})
-}).listen(3001);
+	req.setEncoding('utf8');
+	req.on('data',function(data){
+		console.log(req.method);
+		console.log(data);
+	});
+	req.on('error',function(err){
+		console.error(err);
+	});
+	req.on('end',function(){
+		console.log("++++++++++++++++++");
+	});
+}).listen(3001,function(){
+	console.log('listening port 3001');
+});
