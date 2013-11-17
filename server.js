@@ -1,4 +1,4 @@
-var http = reqire('http');
+var http = require('http');
 var exec = require('child_process').exec;
 http.createServer(function(req,res){
 	var result = '';
@@ -9,4 +9,6 @@ http.createServer(function(req,res){
 	res.on('end',function(){
 		console.log(result);
 	})
-}).listen(3001);
+}).listen(3001,function(){
+	console.log('node server listening on port 3001');
+});
