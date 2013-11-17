@@ -1,8 +1,8 @@
 var http = require('http');
 var exec = require('child_process').exec;
 http.createServer(function(req,res){
-	res.setEncoding('utf8');
-	res.on('data',function(data){
+	req.setEncoding('utf8');
+	req.on('data',function(data){
 		if(req.method==='post'){
 			exec('cd /root/MyNodeBlog;git pull https://github.com/lcya86/MyNodeBlog.git master',function(error, stdout, stderr){
 				console.log('stdout: ' + stdout);
