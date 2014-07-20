@@ -1,5 +1,4 @@
 var http = require('http');
-var querystring = require('querystring');
 var exec = require('child_process').exec;
 http.createServer(function(req,res){
 	var result = '';
@@ -10,13 +9,13 @@ http.createServer(function(req,res){
 	req.on('end',function(){
 		console.log('execing.....');
 		var payload;
-		result = querystring.parse(result);
 		if(req.method==='POST'){
-			payload = JSON.parse(result.payload);
+			payload = JSON.parse(result);
 			var url = payload.repository.url;
 			var strs = new Array();
 			strs = url.split('/');
 			var dir = strs[strs.length-1];
+			console.log('Date:'+new Date());
 			console.log('dir:'+dir);
 			console.log('url:'+url);
 			console.log('strs:'+strs);
